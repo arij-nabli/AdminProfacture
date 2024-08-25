@@ -52,7 +52,7 @@ export default function SubscriptionCard({ abonnement, onDelete }) {
   const handleToggleActive = async () => {
     try {
       const updatedAbonnement = { ...abonnement, actif: !isActif };
-      await axios.patch(`https://localhost:7207/api/Abonnements/RendreInactif/${abonnement.idAbonnement}`, updatedAbonnement);
+      await axios.patch(`https://localhost:44380/api/Abonnements/RendreInactif/${abonnement.idAbonnement}`, updatedAbonnement);
       setIsActif(updatedAbonnement.actif);
     } catch (error) {
       console.error('Error toggling abonnement active state:', error);

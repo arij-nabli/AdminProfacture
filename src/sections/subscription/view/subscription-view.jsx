@@ -17,17 +17,22 @@ export default function SubscriptionView() {
   useEffect(() => {
     const fetchSubscriptions = async () => {
       try {
-        const response = await axios.get('https://localhost:7207/api/Abonnements');
-        setAbonnements(response.data);
+        const response = await axios.get('https://localhost:44380/api/Abonnements');
+        const data = response.data;
+        // Accédez au tableau à l'intérieur de la clé `$values`
+        const subscriptionsArray = Array.isArray(data.$values) ? data.$values : [];
+        setAbonnements(subscriptionsArray);
+        console.log('Data:', data);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching subscriptions:', error);
         setLoading(false);
       }
     };
-
+  
     fetchSubscriptions();
   }, []);
+  
 
   const handleOpenFilter = () => {
     setOpenFilter(true);

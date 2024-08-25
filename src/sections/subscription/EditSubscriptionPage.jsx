@@ -33,7 +33,7 @@ const EditSubscriptionPage = () => {
   useEffect(() => {
     const fetchAbonnement = async () => {
       try {
-        const response = await axios.get(`https://localhost:7207/api/Abonnements/${id}`);
+        const response = await axios.get(`https://localhost:44380/api/Abonnements/${id}`);
         const data = response.data;
         setAbonnement({
           ...data,
@@ -88,7 +88,7 @@ const EditSubscriptionPage = () => {
         ...abonnement,
         titre: !Number.isNaN(numericTitre) ? numericTitre : 0
       };
-      await axios.put(`https://localhost:7207/api/Abonnements/${id}`, updatedAbonnement);
+      await axios.put(`https://localhost:44380/api/Abonnements/${id}`, updatedAbonnement);
       navigate('/abonnement');
     } catch (error) {
       console.error('Error updating abonnement:', error);
